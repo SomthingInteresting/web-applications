@@ -12,29 +12,40 @@ class Application < Sinatra::Base
     "Hello World"
   end
 
-  post '/goodbye' do
-    name = params[:name] # The value is 'Alice'
-  
-    # Do something with `name`...
-  
-    return "Hello #{name}"
-  end
-
-  get '/hello' do
-    name = params[:name] # The value is 'Alice'
-  
-    # Do something with `name`...
-  
-    return "Hello #{name}"
-  end
-
   post '/submit' do
-    name = params[:name] # The value is 'Alice'
-    message = params[:message] # The value is 'Hello World'
-  
-    # Do something with `name`...
-  
-    return "Thanks #{name}, you sent this message: #{message}"
+    name = params[:name]
+    message = params[:message]
+    return "Hello #{name}"
   end
+
+  get '/names' do
+    names = params[:names]
+    return names.split(",").join(", ")
+  end
+
+  # post '/goodbye' do
+  #   name = params[:name] # The value is 'Alice'
+  
+  #   # Do something with `name`...
+  
+  #   return "Hello #{name}"
+  # end
+
+  # get '/hello' do
+  #   name = params[:name] # The value is 'Alice'
+  
+  #   # Do something with `name`...
+  
+  #   return "Hello #{name}"
+  # end
+
+  # post '/submit' do
+  #   name = params[:name] # The value is 'Alice'
+  #   message = params[:message] # The value is 'Hello World'
+  
+  #   # Do something with `name`...
+  
+  #   return "Thanks #{name}, you sent this message: #{message}"
+  # end
 
 end
