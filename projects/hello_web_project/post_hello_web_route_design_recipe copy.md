@@ -7,7 +7,7 @@ _Copy this design recipe template to test-drive a Sinatra route._
 You'll need to include:
 
 
-  Return a list of names
+  Return a sorted list of names
   Method: POST
   Path: /sort-names
   Query parameters: names (string)
