@@ -23,6 +23,11 @@ class Application < Sinatra::Base
     return names.split(",").join(", ")
   end
 
+  post '/sort-names' do
+    names = params[:names]
+    return names.split(",").sort.join(",")
+  end
+
   # post '/goodbye' do
   #   name = params[:name] # The value is 'Alice'
   
