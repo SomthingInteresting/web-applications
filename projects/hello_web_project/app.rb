@@ -28,7 +28,10 @@ class Application < Sinatra::Base
     return names.split(",").sort.join(",")
   end
   
-
+  get '/hello' do
+    @name = params[:name]
+    return erb(:hello)
+  end  
   # post '/goodbye' do
   #   name = params[:name] # The value is 'Alice'
   
