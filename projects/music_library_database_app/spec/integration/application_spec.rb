@@ -65,6 +65,15 @@ describe Application do
       expect(response.body).to include('Release year: 1989')
       expect(response.body).to include('Artist: Pixies')
     end
+
+    it 'should return info about album 2' do
+      response = get('/albums/2')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('<h1>Surfer Rosa</h1>')
+      expect(response.body).to include('Release year: 1988')
+      expect(response.body).to include('Artist: Pixies')
+    end
   end
 end
     
