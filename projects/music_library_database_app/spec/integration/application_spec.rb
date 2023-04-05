@@ -56,6 +56,16 @@ describe Application do
     end
   end
 
+  context "get all albums" do
+    it "returns a HTML list of all albums" do
+      response = get('/albumsweb')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include ('<a href="/albums/1">Doolittle</a>')
+      expect(response.body).to include ('<a href="/albums/2">Surfer Rosa</a>')
+    end
+  end
+
   context 'GET /albums/:id' do
     it 'should return info about album 1' do
       response = get('/albums/1')

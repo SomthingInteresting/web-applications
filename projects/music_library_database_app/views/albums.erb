@@ -1,0 +1,13 @@
+<html>
+  <head></head>
+  <body>
+    <h1>Albums Web List</h1>
+    <div>
+      <% @albums.each do |album|%>
+        <p>
+          <a href="/albums/<%= album.id%>"><%= album.title%></a>
+        </p>
+      <% end %>
+    </div>  
+  </body>
+</html>
