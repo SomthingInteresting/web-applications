@@ -70,5 +70,18 @@ describe Application do
       expect(response.body).to include('<a href="/artists/3">Taylor Swift</a>')
     end
   end
+
+  context "GET /albums/new" do
+    it "returns a form to add a new album" do
+      response = get('/albums/new')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('<h1>Add a new album</h1>')
+      expect(response.body).to include('<form method="POST" action="albums">')
+      expect(response.body).to include('<input type="text" name="title" />')
+      expect(response.body).to include('<input type="text" name="release_year" />')
+      expect(response.body).to include('<input type="text" name="artist_id" />')
+    end
+  end
 end
     
