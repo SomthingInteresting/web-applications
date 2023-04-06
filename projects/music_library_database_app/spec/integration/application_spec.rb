@@ -41,6 +41,13 @@ describe Application do
       expect(response.body).to include('Voyage')
     end
 
+    it 'should validate artist parameters' do
+      response = post('/artists', invalid_artist_name: 'Fake name', another_invalid_thing: 123)
+
+      expect(response.status).to eq(400)
+      expect(response.body).to include('Invalid parameters')
+    end
+
     it "creates a new artist" do 
       response = post('/artists', name: 'Wild nothing', genre: 'Indie')
 
@@ -122,6 +129,18 @@ describe Application do
       expect(response.body).to include('<input type="text" name="title" />')
       expect(response.body).to include('<input type="text" name="release_year" />')
       expect(response.body).to include('<input type="text" name="artist_id" />')
+    end
+  end
+
+  context "GET /artists/new" do
+    it "returns a form to add a new artist" do
+      response = get('/artists/new')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('<h1>Add a new artist</h1>')
+      expect(response.body).to include('<form method="POST" action="/artists">')
+      expect(response.body).to include('<input type="text" name="name" />')
+      expect(response.body).to include('<input type="text" name="genre" />')
     end
   end
 end
