@@ -24,6 +24,13 @@ describe Application do
   end
 
   context "testing the create method" do
+    it 'should validate album parameters' do
+      response = post('/albums', invalid_artist_title: 'OK Computer', another_invalid_thing: 123)
+
+      expect(response.status).to eq(400)
+      expect(response.body).to include('Invalid parameters')
+    end
+
     it "creates a new album" do
       response = post('/albums', title: 'Voyage', release_year: '2022', artist_id: '2')
 
@@ -111,7 +118,7 @@ describe Application do
 
       expect(response.status).to eq 200
       expect(response.body).to include('<h1>Add a new album</h1>')
-      expect(response.body).to include('<form method="POST" action="albums">')
+      expect(response.body).to include('<form method="POST" action="/albums">')
       expect(response.body).to include('<input type="text" name="title" />')
       expect(response.body).to include('<input type="text" name="release_year" />')
       expect(response.body).to include('<input type="text" name="artist_id" />')
