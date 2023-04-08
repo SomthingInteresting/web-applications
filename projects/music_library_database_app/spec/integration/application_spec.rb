@@ -72,6 +72,14 @@ describe Application do
   end  
 
   context "get all albums" do
+    it "returns a list of all albums" do
+      response = get('/albums')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('Doolittle')
+      expect(response.body).to include('Surfer Rosa')
+    end
+
     it "returns a HTML list of all albums" do
       response = get('/albums')
 
