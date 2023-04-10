@@ -11,7 +11,7 @@ class Application < Sinatra::Base
   end
 
   post '/hello' do
-    @name = params[:name]
+    @name = Rack::Utils.escape_html(Rack::Utils.escape_path(params[:name]))
 
     return erb(:hello)
   end

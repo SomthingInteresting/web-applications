@@ -6,7 +6,7 @@
   </head>
   <body>
     <p>
-      Hi <%= @name %>!
+      Hi <%= Rack::Utils.escape_html(@name) %>!
     </p>
   </body>
 </html>
